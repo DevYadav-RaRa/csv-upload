@@ -17,14 +17,14 @@ const App = () => {
         const ServiceId = "DasID"
         const Accountnumber = "DAS121"
         const Servicetype = "MP"  
-        const WebhookStr = `[{'purpose':["OR","OP","VO","VC"],"requestMethod":"POST","url":'https://envqm7h8tmior.x.pipedream.net',"headers":[{"key":"Key1","value":"BusinessHeader"},{"key":"Key2","value":"BusinessHeader"}],"payload":"tmpl-1"}]`
+        //const WebhookStr = `[{'purpose':["OR","OP","VO","VC"],"requestMethod":"POST","url":'https://envqm7h8tmior.x.pipedream.net',"headers":[{"key":"Key1","value":"BusinessHeader"},{"key":"Key2","value":"BusinessHeader"}],"payload":"tmpl-1"}]`
 
         myHeaders.append("tenanttoken", TenantToken);
         myHeaders.append("accountnumber", Accountnumber);
         myHeaders.append("businessname", BusinessName);
         myHeaders.append("serviceid", ServiceId);
         myHeaders.append("servicetype", Servicetype);
-        myHeaders.append("webhook", WebhookStr);
+       // myHeaders.append("webhook", WebhookStr);
         var requestOptions = {
             method: 'GET',
             headers: myHeaders
