@@ -6,13 +6,31 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
+.outerDiv {
+  height: max-content!important;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px 0 20px 0;
+  margin: 50px 0 0 0!important;
+  width: 70vw;
+}
+
+.status {
+  margin: 50px;
+  width: 70vw;
+  background-color: aquamarine;
+  height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
+}
+
 img {
-  height: 200px;
-  width: 200px;
+  height: 50px;
+  width: 50px;
 }
 
 input[type='file'] {
@@ -22,11 +40,35 @@ input[type='file'] {
 input {
   width: 200px;
   height: 50px;
+  padding: 0 20px 0 20px;
 }
 
 input[type=file]::file-selector-button {
   text-decoration: none;
   margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  background: linear-gradient(40deg, #ff6ec4, #7873f5);
+  box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease-out;
+}
+
+button {
+  color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  margin: 0 20px 0 0;
   padding: 0;
   border: 0;
   display: flex;
