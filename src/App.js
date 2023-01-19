@@ -111,7 +111,7 @@ const App = () => {
     //     }
 
         const getStatusV2 = () => {
-          const url = "http://localhost:8181"
+          const url = "https://rara-ms-oms-brs.dev.rara.delivery"
           const endPoint = "/api/v2/orders/csv/"
   
           var requestOptions = {
@@ -147,16 +147,18 @@ const App = () => {
         var myHeaders = new Headers();
 
         const TenantToken = "Das"
-        const BusinessName = "Dasnic"
-        const ServiceId = "DasID"
-        const Accountnumber = "DAS121"
+        const BusinessId = "449"
+        const ServiceId = "8"
+        const Accountnumber = "56"
         const Servicetype = "MP"
+        const UserId = "449"
 
         myHeaders.append("tenanttoken", TenantToken);
         myHeaders.append("accountnumber", Accountnumber);
-        myHeaders.append("businessname", BusinessName);
+        myHeaders.append("businessid", BusinessId);
         myHeaders.append("serviceid", ServiceId);
         myHeaders.append("servicetype", Servicetype);
+       // myHeaders.append("userid", UserId);
 
         var requestOptions = {
             method: 'GET',
@@ -165,6 +167,7 @@ const App = () => {
 
         document.getElementById("status").innerHTML = "Uploading...";
         
+
         fetch('https://rara-ms-oms-brs.dev.rara.delivery/api/v1/orders/presigned', requestOptions)
           .then(response => {return response.text()})
           .then((data) => { const resp = JSON.parse(data)
@@ -176,15 +179,20 @@ const App = () => {
               method: 'PUT',
               headers: {
                 'x-amz-acl' : "public-read",
-                'x-amz-meta-tenanttoken' : resp.data.req.tenantToken,
-                'x-amz-meta-businessname' : resp.data.req.businessDetails.businessName,
-                'x-amz-meta-serviceid' : resp.data.req.businessDetails.serviceId,
-                'x-amz-meta-servicetype' : resp.data.req.businessDetails.serviceType,
-                'x-amz-meta-accountnumber' : resp.data.req.businessDetails.accountNumber,
-                'x-amz-meta-webhook' : resp.data.webhook
+                // 'x-amz-meta-tenanttoken' : resp.data.req.tenantToken,
+                // 'x-amz-meta-businessid' : resp.data.req.businessDetails.businessId,
+                // 'x-amz-meta-serviceid' : resp.data.req.businessDetails.serviceId,
+                // 'x-amz-meta-servicetype' : resp.data.req.businessDetails.serviceType,
+                // 'x-amz-meta-accountnumber' : resp.data.req.businessDetails.accountNumber,
+               // 'x-amz-meta-userid' : UserId,
+               // 'x-amz-meta-webhook' : resp.data.webhook
               },
               body: text
             };
+
+
+            console.log(resp.data.presigned_url);
+            console.log("requestOptions:",requestOptions);
 
             fetch(resp.data.presigned_url, requestOptions)
               .then(response => {
